@@ -24,6 +24,26 @@ testAll: dominion.o testSuite.c
 interface.o: interface.h interface.c
 	gcc -c interface.c -g  $(CFLAGS)
 
+randomtestResults: randomtestcard1.c randomtestcard2.c randomtestcard3.c
+	echo "CARD TEST 1 RESULTS:" > randomtestcard1.out
+	gcc -fprofile-arcs -ftest-coverage -Wall -std=c99 dominion.o randomtestcard1.c rngs.o -o randomtestcard1 -lm -g $(CFLAGS)
+	randomtestcard1 >> randomtestcard1.out
+	gcov -b dominion.c >> randomtestcard1.out
+	gcov dominion.c
+	cat dominion.c.gcov >> randomtestcard1.out
+	echo "CARD TEST 2 RESULTS:" > randomtestcard2.out
+	gcc -fprofile-arcs -ftest-coverage -Wall -std=c99 dominion.o randomtestcard2.c rngs.o -o randomtestcard2 -lm -g $(CFLAGS)
+	randomtestcard2 >> randomtestcard2.out
+	gcov -b dominion.c >> randomtestcard2.out
+	gcov dominion.c
+	cat dominion.c.gcov >> randomtestcard2.out
+	echo "CARD TEST 3 RESULTS:" > randomtestcard3.out
+	gcc -fprofile-arcs -ftest-coverage -Wall -std=c99 dominion.o randomtestcard3.c rngs.o -o randomtestcard3 -lm -g $(CFLAGS)
+	randomtestcard3 >> randomtestcard3.out
+	gcov -b dominion.c >> randomtestcard3.out
+	gcov dominion.c
+	cat dominion.c.gcov >> randomtestcard3.out
+
 unittestresults.out: unittest1.c unittest2.c unittest3.c unittest4.c cardtest1.c cardtest2.c cardtest3.c cardtest4.c  dominion.c rngs.c
 	echo "TESTING RESULTS:" > unittestresults.out
 	echo "UNIT TEST 1" >> unittestresults.out
@@ -76,7 +96,7 @@ runtests: testDrawCard
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
 
-all: playdom player testDrawCard testBuyCard badTestDrawCard unittestresults.out
+all: playdom player testDrawCard testBuyCard badTestDrawCard randomtestResults unittestresults.out
 
 clean:
-	rm -f *.o playdom.exe playdom test.exe test player player.exe testInit testInit.exe *.gcov *.gcda *.gcno *.so unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4 unittestresults.out
+	rm -f *.o playdom.exe playdom test.exe test player player.exe testInit testInit.exe *.gcov *.gcda *.gcno *.so unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4 unittestresults.out randomtestcard1 randomtestcard2 randomtestcard3 randomtestcard1.out randomtestcard2.out randomtestcard3.out
