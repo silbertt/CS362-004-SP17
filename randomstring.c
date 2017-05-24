@@ -1,0 +1,5 @@
+Teage Silbert
+Quiz 2
+4/30/17
+    
+To create the two functions that return random a random char and char* I first looked at how the program creates the 'error'.  Based on this I knew I was going to use the ascii table to get the necessary items.  I started by using a range of ascii numbers for each and using a random number to pick the ascii number and assign it to the char or the char location (for the char*).  Upon doing this I realized that I was missing a few of the necessary values.  Once I realized this I determined it would work better to just include the necessary ascii numbers for both functions.  I then created an int array in each function holding only the values needed to eventually receive the error.  This involved 9 items in the char function and 4 items in the string function.  Upon implementing the functions in this manner it was much quicker to getting to the error message.  
