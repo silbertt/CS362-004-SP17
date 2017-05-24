@@ -136,5 +136,11 @@ int playVillage(struct gameState *state, int handPos);
 int playFeast(struct gameState *state, int choice1);
 int playCouncil_Room(struct gameState *state, int handPos);
 
+//refactored functions for assignment 2
+int smithyPlay(int currentPlayer, struct gameState *state, int handPos);
+int adventurerPlay(int currentPlayer, struct gameState *state, int *temphand);
+int embargoPlay(int currentPlayer, struct gameState *state, int handPos, int choice1);
+int outpostPlay(int currentPlayer, struct gameState *state, int handPos);
+int great_hallPlay(int currentPlayer, struct gameState *state, int handPos);
 
 #endif
