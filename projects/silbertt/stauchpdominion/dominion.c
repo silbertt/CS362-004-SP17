@@ -523,7 +523,8 @@ int getWinners(int players[MAX_PLAYERS], struct gameState *state) {
 }
 
 int drawCard(int player, struct gameState *state)
-{	int count;
+{
+	int count;
   int deckCounter;
   if (state->deckCount[player] <= 0){//Deck is empty
     
@@ -656,6 +657,7 @@ int playAdventurer(struct gameState * state)
     }
     drawCard(currentPlayer, state);
     cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
+	
     if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold){
      	 drawntreasure++;
 	}

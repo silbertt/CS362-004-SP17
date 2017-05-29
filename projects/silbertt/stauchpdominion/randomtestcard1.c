@@ -36,6 +36,7 @@ int main(int argc, char** argv){
 		deckCount = state.deckCount[randTurn] = floor(Random() * MAX_DECK);
 		handCount = state.handCount[randTurn] = floor(Random() * MAX_DECK);
 		
+		state.whoseTurn = randTurn;	
 		//set the position
 		hPosition = floor(Random() * state.handCount[randTurn]);
 		//add smithy card to deck
@@ -46,24 +47,24 @@ int main(int argc, char** argv){
 	       	playSmithy(&state, hPosition);
 		//check to ensure hand has two additional cards		
 		if((handCount + 2) != state.handCount[randTurn]){
-			printf("ERROR ON HAND COUNT ON TEST %d\n\n", i);
-			printf("PLAYERS %d\n", randNumPlayers);
-			printf("PLAYER TURN %d\n", randTurn);
-			printf("HAND BEFORE %d\n", handCount);
-			printf("DECK BEFORE %d\n", deckCount);
-			printf("HAND AFTER %d\n", state.handCount[randTurn]);
-			printf("DECK AFTER %d\n", state.deckCount[randTurn]);
+			//printf("ERROR ON HAND COUNT ON TEST %d\n\n", i);
+			//printf("PLAYERS %d\n", randNumPlayers);
+			//printf("PLAYER TURN %d\n", randTurn);
+			//printf("HAND BEFORE %d\n", handCount);
+			//printf("DECK BEFORE %d\n", deckCount);
+			//printf("HAND AFTER %d\n", state.handCount[randTurn]);
+			//printf("DECK AFTER %d\n", state.deckCount[randTurn]);
 			passFail = 1;
 		}
 		//check to ensure the deck has three less cards
 		if((deckCount - 3) != state.deckCount[randTurn]){
-			printf("ERROR ON DECK COUNT ON TEST %d\n\n", i);
-			printf("PLAYERS %d\n", randNumPlayers);
-			printf("PLAYER TURN %d\n", randTurn);
-			printf("HAND BEFORE %d\n", handCount);
-			printf("DECK BEFORE %d\n", deckCount);
-			printf("HAND AFTER %d\n", state.handCount[randTurn]);
-			printf("DECK AFTER %d\n", state.deckCount[randTurn]);
+			//printf("ERROR ON DECK COUNT ON TEST %d\n\n", i);
+			//printf("PLAYERS %d\n", randNumPlayers);
+			//printf("PLAYER TURN %d\n", randTurn);
+			//printf("HAND BEFORE %d\n", handCount);
+			//printf("DECK BEFORE %d\n", deckCount);
+			//printf("HAND AFTER %d\n", state.handCount[randTurn]);
+			//printf("DECK AFTER %d\n", state.deckCount[randTurn]);
 			passFail = 1;
 		}
 		

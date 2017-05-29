@@ -39,34 +39,36 @@ int main(int argc, char** argv){
 		deckCount = state.deckCount[randTurn] = floor(Random() * MAX_DECK);
 		handCount = state.handCount[randTurn] = floor(Random() * MAX_DECK);
 		actionCount = state.numActions = floor(Random() * 10) + 1;
-		
+	
+		state.whoseTurn = randTurn;	
 		//set the position
 		hPosition = floor(Random() * state.handCount[randTurn]);
 		//add smithy card to deck
 		state.hand[randTurn][hPosition] = smithy;
-				
 		//great_hallPlay(randTurn, &state, hPosition);
 	       	cardEffect(great_hall, 0, 0, 0, &state, hPosition, &bonus);
 		//check to ensure hand has two additional cards		
-		if(handCount != state.handCount[randTurn]){
-			/*printf("ERROR ON HAND COUNT ON TEST %d\n\n", i);
+		if((handCount != state.handCount[randTurn]) && (state.discardCount[randTurn] > 0)){
+			printf("ERROR ON HAND COUNT ON TEST %d\n\n", i);
 			printf("PLAYERS %d\n", randNumPlayers);
 			printf("PLAYER TURN %d\n", randTurn);
 			printf("HAND BEFORE %d\n", handCount);
 			printf("DECK BEFORE %d\n", deckCount);
 			printf("HAND AFTER %d\n", state.handCount[randTurn]);
-			printf("DECK AFTER %d\n\n", state.deckCount[randTurn]);*/
+			printf("DECK AFTER %d\n", state.deckCount[randTurn]);
+			printf("DISCARD %d\n\n", state.discardCount[randTurn]);	
 			passFail = 1;
 		}
 		//check to ensure the deck has three less cards
 		if((actionCount + 1) != state.numActions){
-			/*printf("ERROR ON DECK COUNT ON TEST %d\n\n", i);
+			printf("ERROR ON DECK COUNT ON TEST %d\n\n", i);
 			printf("PLAYERS %d\n", randNumPlayers);
 			printf("PLAYER TURN %d\n", randTurn);
 			printf("ACTIONS BEFORE %d\n", actionCount);
-			printf("ACTIONS AFTER %d\n\n", state.numActions);*/
+			printf("ACTIONS AFTER %d\n\n", state.numActions);
 			passFail = 1;
 		}
+	
 		
 	}
 
